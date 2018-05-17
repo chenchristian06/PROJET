@@ -20,7 +20,7 @@ long puissance(long a,long b){
     }
     return p;
 }
-/*
+
 long hachage(char* nom_sommet,long N){
     int l=strlen(nom_sommet);
     long h=nom_sommet[0]; long a=31415; long b=27183;
@@ -66,6 +66,11 @@ void affichage_H(H_Liste l){
 
 T_SOMMET rechercher(char* nom,H_Liste* tab,long N){
     long h=hachage(nom,N);
-    return tab[h]->sommet;
+    H_Liste p=tab[h];
+    while(p!=NULL){
+        if(strcasecmp((p->sommet).nom,nom)==0) return tab[h]->sommet;
+        p=p->suiv;
+    }
+    printf("Erreur: le sommet %s n'existe pas",nom);
+    exit(1);
 }
-*/
